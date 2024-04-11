@@ -14,7 +14,6 @@ public class Users {
     private String password;
     private String role;
     private boolean googleLinked;
-    private List<String> cvs;
     private List<String> favoritePosts;
 
     public String getId() {
@@ -63,14 +62,6 @@ public class Users {
 
     public void setGoogleLinked(boolean googleLinked) {
         this.googleLinked = googleLinked;
-    }
-
-    public List<String> getCvs() {
-        return cvs;
-    }
-
-    public void setCvs(List<String> cvs) {
-        this.cvs = cvs;
     }
 
     public List<String> getFavoritePosts() {
