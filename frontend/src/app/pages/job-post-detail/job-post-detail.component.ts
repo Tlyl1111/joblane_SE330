@@ -4,8 +4,6 @@ import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-job-post-detail',
-  standalone: true,
-  imports: [HeaderComponent,FooterComponent],
   templateUrl: './job-post-detail.component.html',
   styleUrl: './job-post-detail.component.scss'
 })

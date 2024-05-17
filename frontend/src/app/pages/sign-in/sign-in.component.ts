@@ -4,13 +4,11 @@ import { FooterComponent } from '../footer/footer.component';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { FormsModule } from '@angular/forms';
-
+import { NgModule } from '@angular/core';
 @Component({
-  selector: 'app-sign-in',
-  standalone: true,
+  selector: 'app-sign-in', 
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
-  imports: [HeaderComponent, FooterComponent],
 
 })
 export class SignInComponent {
@@ -20,15 +18,6 @@ export class SignInComponent {
   constructor(private authService: AuthService) {}
 
   onLogin(): void {
-    this.authService.login(this.email, this.password).subscribe(
-      response => {
-        console.log('Login success:', response);
-        // Handle successful login here
-      },
-      error => {
-        console.error('Login error:', error);
-        // Handle login error here
-      }
-    );
+    
   }
 }
