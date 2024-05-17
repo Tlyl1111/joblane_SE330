@@ -4,8 +4,6 @@ import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-forget-password',
-  standalone: true,
-  imports: [HeaderComponent, FooterComponent],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss'
 })
