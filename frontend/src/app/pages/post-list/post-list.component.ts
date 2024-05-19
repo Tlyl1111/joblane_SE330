@@ -7,25 +7,27 @@ import jQuery from 'jquery';
 const $ = jQuery;
 
 @Component({
-  selector: 'app-search-results',
+  selector: 'app-post-list',
   standalone: true,
   imports: [HeaderComponent, FooterComponent, NgFor],
-  templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.scss']
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.scss']
 })
-export class SearchResultsComponent implements AfterViewInit {
+export class PostListComponent implements AfterViewInit {
   items = Array(15).fill(0).map((_, i) => `Item ${i + 1}`);
 
   constructor() {}
 
   ngAfterViewInit() {
-    this.initSlickCarousel('.result-list-slider', {
+    this.initSlickCarousel('.post-list', {
       dots: true,
       infinite: true,
       speed: 300,
-      rows: 5,  
-      slidesToShow: 1,  
-      slidesToScroll: 1  
+      rows: 5,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      prevArrow: '.slick-prev',
+      nextArrow: '.slick-next'
     });
   }
 
