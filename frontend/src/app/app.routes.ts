@@ -10,16 +10,16 @@ import { NgModule } from '@angular/core';
 
 
 export const routes: Routes = [
-  { path: 'sign-in', component: SignInComponent, pathMatch: 'full' },
-  { path: 'sign-in-1', component: SignIn1Component, pathMatch:'full'},
-  { path: 'sign-in-2', component: SignIn2Component, pathMatch:'full'},
-  { path: 'forget-password', component: ForgetPasswordComponent, pathMatch:'full'},
-  { path: 'search-result', component: SearchResultsComponent, pathMatch:'full'},
-  { path: 'job-post', component: JobPostDetailComponent, pathMatch:'full'},
+  { path: 'sign-in', component: SignInComponent},
+  { path: 'sign-in-1', component: SignIn1Component},
+  { path: 'sign-in-2', component: SignIn2Component},
+  { path: 'forget-password', component: ForgetPasswordComponent},
+  { path: 'search-result', component: SearchResultsComponent},
+  { path: 'job-post', component: JobPostDetailComponent},
 
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

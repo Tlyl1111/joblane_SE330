@@ -8,35 +8,34 @@ import { NgModule } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in', 
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
+  providers: []
 
 })
-export class SignInComponent implements OnInit {
-  loginForm: FormGroup;
+export class SignInComponent {
+  email: string = '';
+  password: string = '';
+  message: string = '';
 
-  constructor() {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
-    });
-  }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-  }
-
-  onLogin() {
-    const email = this.loginForm.get('email')!.value;
-    const password = this.loginForm.get('password')!.value;
-    if (email === 'abc@gmail.com' && password === 'abc') {
-      alert('Đăng nhập thành công!');
-    } else {
-      alert('Email hoặc mật khẩu không chính xác.');
-    }
+  onSubmit() {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    this.http.post('/api/auth/login', { email: this.email, password: this.password }, { headers, responseType: 'text' as 'json' })
+        .subscribe((response: any) => { // Sử dụng kiểu 'any'
+            console.log("Response from backend:", response);
+            this.message = response as string; // Ép kiểu 'response' thành chuỗi
+        }, (error: any) => { // Sử dụng kiểu 'any'
+            console.error("Error from backend:", error);
+            this.message = 'Đăng nhập không thành công';
+        });
   }
 }

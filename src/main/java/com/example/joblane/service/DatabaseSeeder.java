@@ -21,11 +21,11 @@ public class DatabaseSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Users user = new Users();
         user.setName("Test User");
-        user.setEmail("test@example.com");
-        user.setPassword("password");
+        user.setEmail("abc@gmail.com");
+        user.setPassword("abc");
         user.setRole("ROLE_USER");
         user.setGoogleLinked(false);
 
-        userRepository.save(user);
+        
     }
 }
