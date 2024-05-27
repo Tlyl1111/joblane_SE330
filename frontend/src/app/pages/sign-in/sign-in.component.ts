@@ -4,31 +4,38 @@ import { FooterComponent } from '../footer/footer.component';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-sign-in', 
   standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
-  imports: [HeaderComponent, FooterComponent],
+  providers: []
 
 })
 export class SignInComponent {
   email: string = '';
   password: string = '';
+  message: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private http: HttpClient) { }
 
-  onLogin(): void {
-    this.authService.login(this.email, this.password).subscribe(
-      response => {
-        console.log('Login success:', response);
-        // Handle successful login here
-      },
-      error => {
-        console.error('Login error:', error);
-        // Handle login error here
-      }
-    );
+  onSubmit() {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    this.http.post('/api/auth/login', { email: this.email, password: this.password }, { headers, responseType: 'text' as 'json' })
+        .subscribe((response: any) => { // Sử dụng kiểu 'any'
+            console.log("Response from backend:", response);
+            this.message = response as string; // Ép kiểu 'response' thành chuỗi
+        }, (error: any) => { // Sử dụng kiểu 'any'
+            console.error("Error from backend:", error);
+            this.message = 'Đăng nhập không thành công';
+        });
   }
 }

@@ -1,5 +1,4 @@
 
-<app-header></app-header>
 
      <div class="top text-center mt-3 mb-5">
         <img src="assets/img/Logo/logo-01 1 (1).svg" class="custom-logo" alt="logo">
@@ -7,7 +6,7 @@
         <p>Joblane - Your Journey to the Right Job!</p>
     </div>
     
-    <form class="w-30 mx-auto" id="login" action="/auth">
+    <form class="w-30 mx-auto" id="login" action=" " (ngSubmit)="onSubmit()">
         <div class="form-group">
            
             <button class="secondary google-btn d-flex justify-content-center" type="submit">
@@ -23,11 +22,11 @@
           
         <div class="form-group">
             <label class="login-label" for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" name="Email" id="Email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" name="Email" id="Email" aria-describedby="emailHelp" [(ngModel)]="email">
         </div>
         <div class="form-group mb-3">
             <label class="login-label" for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" name="Password" id="Password">
+            <input type="password" class="form-control" name="Password" id="Password" [(ngModel)]="password">
         </div>
         <div class="form-group d-flex justify-content-between mb-3">
             <div class="form-check">
@@ -35,12 +34,13 @@
                 <label class="form-check-label sub-label" for="exampleCheck1">Remember me</label>
             </div>
             <div>
-                <a href="#">Forget Password  ></a>
+                <a href="/forget-password">Forget Password  ></a>
             </div>
         </div>
         <div class="form-group">
             <button class="primary" type="submit">Log in</button>
         </div>
+        <p>{{ message }}</p>
     </form>
 
-<app-footer></app-footer>
+
