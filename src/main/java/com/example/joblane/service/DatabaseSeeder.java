@@ -26,6 +26,5 @@ public class DatabaseSeeder implements CommandLineRunner {
         user.setRole("ROLE_USER");
         user.setGoogleLinked(false);
 
-        
     }
 }
