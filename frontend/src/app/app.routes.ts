@@ -5,6 +5,12 @@ import { SignIn2Component } from './pages/sign-in-2/sign-in-2.component';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { JobPostDetailComponent } from './pages/job-post-detail/job-post-detail.component';
+import { ApplicantListComponent} from './pages/applicant-list/applicant-list.component'
+import { PostListComponent} from './pages/post-list/post-list.component'
+import { PersonalEmployerComponent} from './pages/personal-employer/personal-employer.component'
+import { PersonalJobSeekerComponent} from './pages/personal-jobseeker/personal-jobseeker.component'
+
+
 import { NgModule } from '@angular/core';
 
 
@@ -16,6 +22,10 @@ export const routes: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent},
   { path: 'search-result', component: SearchResultsComponent},
   { path: 'job-post', component: JobPostDetailComponent},
+  { path: 'applicant-list', component: ApplicantListComponent},
+  { path: 'post-list', component: PostListComponent},
+  { path: 'personal-employer', component: PersonalEmployerComponent},
+  { path: 'personal-jobseeker', component: PersonalJobSeekerComponent}
 
 ];
 @NgModule({

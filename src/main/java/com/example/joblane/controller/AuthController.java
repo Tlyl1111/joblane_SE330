@@ -1,6 +1,8 @@
 package com.example.joblane.controller;
 
+import com.example.joblane.entity.Users;
 import com.example.joblane.model.dto.UserLoginRequest;
+import com.example.joblane.repository.UserRepository;
 import com.example.joblane.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,17 @@ public class AuthController {
         System.out.println("unsuccessfully");
           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Đăng nhập không thành công");
       }
+    }
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<?> signUp(@RequestBody Users user) {
+      if (userRepository.existsByEmail(user.getEmail())) {
+        return ResponseEntity.badRequest().body("Email already in use");
+    }
+    userRepository.save(user);
+    return ResponseEntity.ok("User registered successfully");
     }
     
 }
