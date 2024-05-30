@@ -30,10 +30,10 @@ export class SignInComponent {
   onSubmit() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     this.http.post('/api/auth/login', { email: this.email, password: this.password }, { headers, responseType: 'text' as 'json' })
-        .subscribe((response: any) => { // Sử dụng kiểu 'any'
+        .subscribe((response: any) => { 
             console.log("Response from backend:", response);
-            this.message = response as string; // Ép kiểu 'response' thành chuỗi
-        }, (error: any) => { // Sử dụng kiểu 'any'
+            this.message = response as string; 
+        }, (error: any) => { 
             console.error("Error from backend:", error);
             this.message = 'Đăng nhập không thành công';
         });
