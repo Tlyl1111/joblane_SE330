@@ -9,7 +9,8 @@ import { ApplicantListComponent} from './pages/applicant-list/applicant-list.com
 import { PostListComponent} from './pages/post-list/post-list.component'
 import { PersonalEmployerComponent} from './pages/personal-employer/personal-employer.component'
 import { PersonalJobSeekerComponent} from './pages/personal-jobseeker/personal-jobseeker.component'
-
+import {FavListComponent} from './pages/fav-list/fav-list.component'
+import {ListAppliedJobComponent} from './pages/list-applied-job/list-applied-job.component'
 
 import { NgModule } from '@angular/core';
 
@@ -25,7 +26,9 @@ export const routes: Routes = [
   { path: 'applicant-list', component: ApplicantListComponent},
   { path: 'post-list', component: PostListComponent},
   { path: 'personal-employer', component: PersonalEmployerComponent},
-  { path: 'personal-jobseeker', component: PersonalJobSeekerComponent}
+  { path: 'personal-jobseeker', component: PersonalJobSeekerComponent},
+  { path: 'fav-list', component: FavListComponent},
+  { path: 'list-applied-job', component: ListAppliedJobComponent}
 
 ];
 @NgModule({
