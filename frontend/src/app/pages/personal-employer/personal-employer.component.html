@@ -1,3 +1,4 @@
+
 <div class="text-center mt-5">  
     <div class="title">Hi, Manager</div>
     <p class="sub-title">Your Profile</p>
@@ -59,7 +60,7 @@
             <div class="col-6">
 
                 <div class="mb-3">
-                    <p class="text" for="company"> Your Company</p>                    
+                    <p class="sub-label" for="company"> Your Company</p>                    
                 </div>
                 <div class="mb-3">
                     <p class="text" for="companyName">Company Name</p>
@@ -70,29 +71,28 @@
                 </div>
                 <div class="mb-3">
                     <p class="text" for="companyDescription">Company Description</p>
-                    <textarea Description="text" class="form-control" name="companyDescription" id="companyDescription" placeholder="" required></textarea>
+                    <textarea rows="5" Description="text" class="form-control" name="companyDescription" id="companyDescription" placeholder="" required></textarea>
                     <div class="invalid-feedback">
                         Please enter your company description.
                     </div>
                 </div>
                 <div class="mb-3">
                     <p class="text" for="companyGoal">Company Goal</p>
-                    <textarea type="text" class="form-control" name="companyGoal" id="companyGoal" placeholder="" required></textarea>
+                    <textarea rows="5" type="text" class="form-control" name="companyGoal" id="companyGoal" placeholder="" required></textarea>
                     <div class="invalid-feedback">
                         Please enter your company goal.
                     </div>
                 </div>
                 <div class="mb-3">
                     <p class="text" for="companyAdress">Company Adress</p>
-                    <textarea type="text" class="form-control" name="companyAdress" id="companyAdress" placeholder="" required></textarea>
-                    
+                    <textarea rows="5" type="text" class="form-control" name="companyAdress" id="companyAdress" placeholder="" required></textarea>
                     <div class="invalid-feedback">
                         Please enter your company adress.
                     </div>
                 </div>
                 <div class="mb-3">
                     <p class="text" for="description">Description</p>
-                    <textarea type="text" class="form-control" name="description" id="description" placeholder="" required></textarea>
+                    <textarea rows="5" type="text" class="form-control" name="description" id="description" placeholder="" required></textarea>
                     <div class="invalid-feedback">
                         Please enter your description.
                     </div>
@@ -100,6 +100,9 @@
                 <div class="Company-logo">
                     <p class="text">Edit your Company Logo</p>
                     <div class="box center">  
+                        <div class="p-2 icon-cate center">
+                            <img src="assets/icons/FileUpload.svg" alt="Icon">
+                          </div>
                               <p class="text-center">Select or Drag and Drop here</p>
                               <p  class="text-center opacity"> <span style="color:gray">PNG, SVG file size no more than 10MB</span></p>
                               <label class="center text-center" for="CompanyLogo">Select file</label>
@@ -108,9 +111,11 @@
                         </div>     
             </div>
         </div>
-        <div class="text-center">
+        <div class="text-center w-30 col-md-4 offset-md-4">
             <button class="primary w-100"  type="submit">Save changes</button>
         </div>
     </div>
 </form>
+
+<br> <br>
 
