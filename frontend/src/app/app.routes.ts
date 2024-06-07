@@ -13,6 +13,7 @@ import {FavListComponent} from './pages/fav-list/fav-list.component'
 import {ListAppliedJobComponent} from './pages/list-applied-job/list-applied-job.component'
 import { NewCompanyComponent } from './pages/new-company/new-company.component';
 import { ApplyCVComponent } from './pages/apply-cv/apply-cv.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 import { NgModule } from '@angular/core';
 
@@ -32,7 +33,8 @@ export const routes: Routes = [
   { path: 'fav-list', component: FavListComponent},
   { path: 'list-applied-job', component: ListAppliedJobComponent},
   { path: 'new-company', component: NewCompanyComponent},
-  { path: 'apply-cv', component: ApplyCVComponent}
+  { path: 'apply-cv', component: ApplyCVComponent},
+  { path: 'home', component: HomepageComponent}
   
 
 ];
