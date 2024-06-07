@@ -29,11 +29,19 @@ export class SignIn2Component {
   onSubmit() {
     if (this.signupForm.valid) {
       const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+      console.log('Submitting form:', this.signupForm.value);
       this.http.post('/api/auth/sign-up', this.signupForm.value, { headers, responseType: 'text' as 'json' })
         .subscribe(
           (response: any) => {
             console.log("Response from backend:", response);
-            this.message = response as string;
+            const parsedResponse = JSON.parse(response);
+
+            localStorage.setItem('userId', parsedResponse.id);
+            localStorage.setItem('userName', parsedResponse.name); 
+            localStorage.setItem('userEmail', parsedResponse.email);  
+            const id = localStorage.getItem('userId');
+
+            console.log("User ID saved to localStorage:", id);
             this.router.navigate(['/sign-in-1']);
           },
           (error: any) => {

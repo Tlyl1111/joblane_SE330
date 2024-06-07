@@ -9,10 +9,20 @@ public class JobSeekers {
     @Id
     private String id;
     private String DoB;
-    private String KeyAcc;
     private String Address;
     private String Bio;
     private String CV;
+    private String avatar;
+    private String Phone;
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
     @DBRef
     private Users userId;
 
@@ -34,14 +44,7 @@ public class JobSeekers {
     public void setDoB(String doB) {
         DoB = doB;
     }
-
-    public String getKeyAcc() {
-        return KeyAcc;
-    }
-
-    public void setKeyAcc(String keyAcc) {
-        KeyAcc = keyAcc;
-    }
+   
 
     public String getAddress() {
         return Address;
@@ -73,5 +76,13 @@ public class JobSeekers {
 
     public void setUserId(Users userId) {
         this.userId = userId;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

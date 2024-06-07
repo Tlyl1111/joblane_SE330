@@ -1,9 +1,14 @@
 package com.example.joblane.controller;
 
+import com.example.joblane.entity.JobSeekers;
 import com.example.joblane.entity.Users;
 import com.example.joblane.model.dto.UserLoginRequest;
+import com.example.joblane.repository.JobSeekerRepository;
 import com.example.joblane.repository.UserRepository;
 import com.example.joblane.service.UserService;
+
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,7 +46,28 @@ public class AuthController {
         return ResponseEntity.badRequest().body("Email already in use");
     }
     userRepository.save(user);
-    return ResponseEntity.ok("User registered successfully");
+    System.out.println(user.getId());
+    return ResponseEntity.ok().body(user);
     }
+
+     @Autowired
+    private JobSeekerRepository jobSeekerRepository;
+
+    @PostMapping("/jobseeker")
+    public JobSeekers createJobSeeker(@RequestBody Map<String, String> request) {
+      String userId = request.get("userId");
+      Users user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+      
+      JobSeekers jobSeeker = new JobSeekers();
+      jobSeeker.setUserId(user);
+      
+      user.setRole("Jobseeker");
+      userRepository.save(user);
+      System.out.println(jobSeeker);
+
+      return jobSeekerRepository.save(jobSeeker);
+    }
+    
+
     
 }
