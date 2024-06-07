@@ -26,14 +26,14 @@ public class JobPosts {
     private Date endDate;
     private boolean isApproved;
     @DBRef
-    private Companies companyId;
+    private Employers employerId;
 
-    public Companies getCompanyId() {
-        return companyId;
+    public Employers getEmployerId() {
+        return employerId;
     }
 
-    public void setCompanyId(Companies companyId) {
-        this.companyId = companyId;
+    public void setEmployerId(Employers employerId) {
+        this.employerId = employerId;
     }
 
     public String getId() {
