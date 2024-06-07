@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 
 export class PersonalJobSeekerComponent implements OnInit {
   profileForm: FormGroup;
+  avatar: string | ArrayBuffer = 'assets/img/Avatar-largesize.jpg'; // Đặt avatar mặc định
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.profileForm = this.fb.group({
@@ -27,6 +28,7 @@ export class PersonalJobSeekerComponent implements OnInit {
       phone: ['', Validators.required],
       birthday: ['', Validators.required],
       biography: ['', Validators.required],
+      avatar: ['']
     });
   }
 
@@ -38,16 +40,24 @@ export class PersonalJobSeekerComponent implements OnInit {
 
     if (userName) {
       const [firstName, lastName] = userName.split(' ');
-      this.profileForm.patchValue({
-        firstName: firstName || '',
-        lastName: lastName || ''
-      });
+      this.profileForm.patchValue({ firstName: firstName || '', lastName: lastName || '' });
     }
 
     if (userEmail) {
-      this.profileForm.patchValue({
-        email: userEmail
-      });
+      this.profileForm.patchValue({ email: userEmail });
+    }
+  }
+
+  onFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length) { // Thêm điều kiện kiểm tra input.files
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.avatar = reader.result as string;
+        this.profileForm.patchValue({ avatar: this.avatar });
+      };
+      reader.readAsDataURL(file);
     }
   }
 
@@ -57,22 +67,18 @@ export class PersonalJobSeekerComponent implements OnInit {
       const jobseekerId = localStorage.getItem('jobseekerId');
       const userId = localStorage.getItem('userId');
       console.log('form data: ', formData);
-  
+
       const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  
-      this.http.post<{ message?: string, error?: string }>('/api/updateProfile', { formData, jobseekerId, userId }, { headers }).subscribe(response => {
-        if (response.message) {
-          console.log('Profile updated successfully', response.message);
-          this.router.navigate(['/sign-in']);
-          // Handle successful response
-        }
-        if (response.error) {
-          console.error('Error updating profile', response.error);
-          // Handle error response
-        }
-      }, error => {
-        console.error('Error updating profile', error);
-      });
+      this.http.post('/api/updateProfile', { formData, jobseekerId, userId }, { headers })
+        .subscribe(
+          response => {
+            console.log('Profile updated successfully', response);
+            this.router.navigate(['/sign-in']);
+          },
+          error => {
+            console.error('Error updating profile', error);
+          }
+        );
     }
   }
 }
