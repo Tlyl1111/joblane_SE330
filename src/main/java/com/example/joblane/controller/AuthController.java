@@ -2,9 +2,11 @@ package com.example.joblane.controller;
 
 import com.example.joblane.config.AuthenticationException;
 import com.example.joblane.entity.JobSeekers;
+import com.example.joblane.entity.Employers;
 import com.example.joblane.entity.Users;
 import com.example.joblane.model.dto.LoginRequest;
 import com.example.joblane.model.dto.UserLoginRequest;
+import com.example.joblane.repository.EmployerRepository;
 import com.example.joblane.repository.JobSeekerRepository;
 import com.example.joblane.repository.UserRepository;
 import com.example.joblane.service.AuthService;
@@ -66,6 +68,24 @@ public class AuthController {
       System.out.println(jobSeeker);
 
       return jobSeekerRepository.save(jobSeeker);
+    }
+
+    @Autowired
+    private EmployerRepository employerRepository;
+
+    @PostMapping("/employer")
+    public Employers createEmployer(@RequestBody Map<String, String> request) {
+      String userId = request.get("userId");
+      Users user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+      
+      Employers employer = new Employers();
+      employer.setUserId(user);
+      
+      user.setRole("Employer");
+      userRepository.save(user);
+      System.out.println(employer);
+
+      return employerRepository.save(employer);
     }
     
 
