@@ -1,10 +1,13 @@
 package com.example.joblane.controller;
 
+import com.example.joblane.config.AuthenticationException;
 import com.example.joblane.entity.JobSeekers;
 import com.example.joblane.entity.Users;
+import com.example.joblane.model.dto.LoginRequest;
 import com.example.joblane.model.dto.UserLoginRequest;
 import com.example.joblane.repository.JobSeekerRepository;
 import com.example.joblane.repository.UserRepository;
+import com.example.joblane.service.AuthService;
 import com.example.joblane.service.UserService;
 
 import java.util.Map;
@@ -23,19 +26,16 @@ import org.springframework.http.ResponseEntity;
 public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserLoginRequest request) {
-      boolean isValid = userService.validateUser(request.getEmail(), request.getPassword());
-      if (isValid) {
-        System.out.println("successfully");
-          return ResponseEntity.ok("Đăng nhập thành công");
-          
-      } else {
-        System.out.println("unsuccessfully");
-          return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Đăng nhập không thành công");
-      }
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        try {
+            Users user = authService.login(loginRequest.getEmail(), loginRequest.getPassword());
+            return ResponseEntity.ok(user);
+        } catch (AuthenticationException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
     }
     @Autowired
     private UserRepository userRepository;
