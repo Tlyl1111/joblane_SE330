@@ -25,17 +25,23 @@ export class SignInComponent {
   password: string = '';
   message: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  onSubmit() {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    this.http.post('/api/auth/login', { email: this.email, password: this.password }, { headers, responseType: 'text' as 'json' })
-        .subscribe((response: any) => { 
-            console.log("Response from backend:", response);
-            this.message = response as string; 
-        }, (error: any) => { 
-            console.error("Error from backend:", error);
-            this.message = 'Đăng nhập không thành công';
-        });
+  login() {
+    this.http.post<any>('/api/auth/login', { email: this.email, password: this.password }).subscribe(
+      response => {
+        console.log('Login successful', response.role);
+        console.log('id', response.id);
+        localStorage.setItem('userRole', response.role);
+        localStorage.setItem('userRole', response.id);
+        
+        this.message = 'Login successful: ';
+        this.router.navigate(['/home']);
+      },
+      error => {
+        console.error('Login failed', error);
+        this.message = 'Email hoặc mật khẩu không đúng';
+      }
+    );
   }
 }
