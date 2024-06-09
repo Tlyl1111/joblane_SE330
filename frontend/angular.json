@@ -31,10 +31,14 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/slick-carousel/slick/slick.css",
+              "node_modules/slick-carousel/slick/slick-theme.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -75,7 +79,10 @@
               "buildTarget": "joblane:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -97,9 +104,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss"              
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           }
         }
       }

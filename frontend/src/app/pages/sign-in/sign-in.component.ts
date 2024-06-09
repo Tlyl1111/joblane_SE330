@@ -5,19 +5,43 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 @Component({
   selector: 'app-sign-in', 
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
+  providers: []
 
 })
 export class SignInComponent {
   email: string = '';
   password: string = '';
+  message: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  onLogin(): void {
-    
+  login() {
+    this.http.post<any>('/api/auth/login', { email: this.email, password: this.password }).subscribe(
+      response => {
+        console.log('Login successful', response.role);
+        console.log('id', response.id);
+        localStorage.setItem('userRole', response.role);
+        localStorage.setItem('userRole', response.id);
+        
+        this.message = 'Login successful: ';
+        this.router.navigate(['/home']);
+      },
+      error => {
+        console.error('Login failed', error);
+        this.message = 'Email hoặc mật khẩu không đúng';
+      }
+    );
   }
 }
