@@ -1,4 +1,4 @@
-<form id="new_company" action="" method="post" enctype="multipart/form-data">
+<form id="new_company" [formGroup]="companyForm" (ngSubmit)="onSubmit()">
     <div id="myModal" class="modal">
     <div class="modal-content">
         <div class="title">
@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <p class="text" for="companyName">Company Name</p>
-                <input type="text" class="form-control" name="companyName" id="companyName" placeholder="" required>
+                <input type="text" class="form-control" formControlName="companyName" name="companyName" id="companyName" placeholder="" required>
                 <div class="invalid-feedback">
                     Please enter your company name.
                 </div>
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <p class="text" for="companyAdress">Company Adress</p>
-                        <input type="text" type="text" class="form-control" name="companyAdress" id="companyAdress"
+                        <input type="text" type="text" class="form-control" formControlName="companyAddress" name="companyAdress" id="companyAdress"
                             placeholder="" required>
                         <div class="invalid-feedback">
                             Please enter your company adress.
@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <p class="text" for="description">Company Email</p>
-                        <input type="text" type="text" class="form-control" name="companyEmail" id="companyEmail"
+                        <input type="text" type="text" class="form-control" formControlName="companyEmail" name="companyEmail" id="companyEmail"
                             placeholder="" required>
                         <div class="invalid-feedback">
                             Please enter your description.
@@ -39,7 +39,7 @@
             </div>
             <div class="mb-3">
                 <p class="text" for="companyDescription">Company Description</p>
-                <textarea rows="5" Description="text" class="form-control" name="companyDescription"
+                <textarea rows="5" Description="text" class="form-control" formControlName="companyDescription" name="companyDescription"
                     id="companyDescription" placeholder="" required></textarea>
                 <div class="invalid-feedback">
                     Please enter your company description.
@@ -47,7 +47,7 @@
             </div>
             <div class="mb-3">
                 <p class="text" for="companyGoal">Company Goal</p>
-                <textarea rows="5" type="text" class="form-control" name="companyGoal" id="companyGoal"
+                <textarea rows="5" type="text" class="form-control" formControlName="companyGoal" name="companyGoal" id="companyGoal"
                     placeholder="" required></textarea>
                 <div class="invalid-feedback">
                     Please enter your company goal.
@@ -55,7 +55,7 @@
             </div>
 
    
-            <!-- Add logo
+            Add logo
             <div class="Company-logo">
                 <p class="text">Edit your Company Logo</p>
                 <div class="box center">
@@ -66,13 +66,14 @@
                     <p class="text-center opacity"> <span style="color:gray">PNG, SVG file size no more than
                             10MB</span></p>
                     <label class="center text-center" for="CompanyLogo">Select file</label>
-                    <input type="file" id="CompanyLogo" name="CompanyLogo" accept="image/png, image/jpeg"
+                    <input type="file" id="CompanyLogo" name="CompanyLogo"  accept="image/png, image/jpeg" (change)="onFileChange($event)"
                         class="lg-center">
                 </div> <br>
-            </div> -->
+            </div> 
+            {{ message }}
         </div>
         <div class="action d-inline-flex justify-content-start mt-5">
-            <a href="/job/alljob" type="reset" class="btn btn-secondary">Cancel</a>
+            <a href="" type="reset" onclick="location.href='/personal-employer';" href="/personal-employer" class="btn btn-secondary">Cancel</a>
             <button type="submit" value="Apply CV" class="btn btn-primary ml-5">Apply</button>
         </div>
     </div>
