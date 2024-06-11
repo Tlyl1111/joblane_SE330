@@ -8,4 +8,6 @@ import com.example.joblane.entity.Users;
 public interface EmployerRepository extends MongoRepository<Employers, String> {
     Employers findByUserId(Users user);
     // Custom queries can be defined here...
+
+    Employers findByUserId(String userId);
 }

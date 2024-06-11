@@ -14,6 +14,8 @@ import {ListAppliedJobComponent} from './pages/list-applied-job/list-applied-job
 import { NewCompanyComponent } from './pages/new-company/new-company.component';
 import { ApplyCVComponent } from './pages/apply-cv/apply-cv.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { PostNewJobComponent } from './pages/post-new-job/post-new-job.component';
+
 
 import { NgModule } from '@angular/core';
 
@@ -34,7 +36,8 @@ export const routes: Routes = [
   { path: 'list-applied-job', component: ListAppliedJobComponent},
   { path: 'new-company', component: NewCompanyComponent},
   { path: 'apply-cv', component: ApplyCVComponent},
-  { path: 'home', component: HomepageComponent}
+  { path: 'home', component: HomepageComponent},
+  { path: 'post-new-job', component: PostNewJobComponent}
   
 
 ];
