@@ -36,12 +36,12 @@
 </div>
     <p class="mt-5 mb-3 h4">Hi Employer!</p>
     <p class="my-2">You can follow your Post</p>    
-        <div class="post-list-container">
+        <div class="post-list-container d-flex justify-content-center">
             <button class="slick-prev">Previous</button>
             <div class="post-list" ngxSlickCarousel config="slickConfig">
                 <a class="list-item d-flex align-items-center" ngxSlickItem *ngFor="let job of jobPosts"  >
                     
-                        <img  [src]="job.jobPostImage" alt="{{job.title}}">
+                        <img id="job-post"  [src]="job.jobPostImage" alt="{{job.title}}">
                         <div class="d-flex flex-column align-items-start">
                             <h6>{{job.title}}</h6>
                             <p>{{job.companyType}} </p>
@@ -50,7 +50,7 @@
                             <button type="submit" class="primary d-flex ">
                                 Candidates: 18
                             </button>
-                            <button type="submit" class="secondary d-flex mx-3">
+                            <button type="submit" class="secondary d-flex mx-3 align-items-center">
                                 Close
                                 <img src="assets/icons/Chevron Right.svg" alt="arrow">
                             </button>
