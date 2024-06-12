@@ -50,5 +50,10 @@ public class CompanyController {
         Companies company = companyRepository.findBycompanyName(companyName);
         return company != null ? ResponseEntity.ok(company) : ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/{id}")
+    public Companies getCompanyById(@PathVariable String id) {
+        return companyRepository.findById(id).orElse(null);
+    }
 }
 
