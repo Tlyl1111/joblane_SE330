@@ -30,6 +30,17 @@ export class SignIn1Component {
   }
 
   createEmployer() {
-    // Logic tương tự cho Employer
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.http.post('http://localhost:8080/api/auth/employer', { userId: userId }).subscribe((response: any) => {
+        localStorage.setItem('role', 'Employer');
+        console.log('Employer created:', response);
+        localStorage.setItem('employerId', response.id); 
+        console.log('Employer id:', response.id);
+        this.router.navigate(['/personal-employer']);
+      });
+    } else {
+      console.error('User ID not found in localStorage');
+    }
   }
 }

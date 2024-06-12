@@ -1,5 +1,7 @@
 package com.example.joblane.entity;
 
+import java.util.Optional;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,51 +9,55 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Companies {
     @Id
     private String id;
-    private String name;
-    private String description;
-    private String email;
-    private String contactNumber;
-
+    private String companyName;
+    private String companyEmail;
+    private String companyAddress;
+    private String companyLogo;
+    private String companyDescription;
+    private String companyGoal;
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
-    public String getName() {
-        return name;
+    public String getCompanyName() {
+        return companyName;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
-
-    public String getDescription() {
-        return description;
+    public String getCompanyEmail() {
+        return companyEmail;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCompanyEmail(String companyEmail) {
+        this.companyEmail = companyEmail;
     }
-
-    public String getEmail() {
-        return email;
+    public String getCompanyAddress() {
+        return companyAddress;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
     }
-
-    public String getContactNumber() {
-        return contactNumber;
+    public String getCompanyLogo() {
+        return companyLogo;
     }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setCompanyLogo(String companyLogo) {
+        this.companyLogo = companyLogo;
     }
-
-    public Companies() {
+    public String getCompanyDescription() {
+        return companyDescription;
     }
+    public void setCompanyDescription(String companyDescription) {
+        this.companyDescription = companyDescription;
+    }
+    public String getCompanyGoal() {
+        return companyGoal;
+    }
+    public void setCompanyGoal(String companyGoal) {
+        this.companyGoal = companyGoal;
+    }
+    
+    
+    
 }
