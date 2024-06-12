@@ -37,7 +37,7 @@ export const routes: Routes = [
   { path: 'sign-in-2', component: SignIn2Component},
   { path: 'forget-password', component: ForgetPasswordComponent},
   { path: 'search-result', component: SearchResultsComponent},
-  { path: 'job-post', component: JobPostDetailComponent},
+  { path: 'job-post-detail', component: JobPostDetailComponent},
   { path: 'applicant-list', component: ApplicantListComponent},
   { path: 'post-list', component: PostListComponent},
   { path: 'personal-employer', component: PersonalEmployerComponent},
