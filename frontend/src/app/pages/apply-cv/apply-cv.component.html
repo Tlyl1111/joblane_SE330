@@ -1,4 +1,4 @@
-<form id="apply_form" action="/jobseeker/loading_cv" method="post" enctype="multipart/form-data">
+<form id="apply_form" [formGroup]="applyForm" (ngSubmit)="onSubmit()">
     <div id="myModal" class="modal">
     <div class="modal-content">
         <div class="title">
@@ -6,11 +6,11 @@
             <span class="color-1">Specialist Digital Marketing/Content Marketing</span>
         </div>
         <hr>
-        <form class="infor"> 
+        <div class="infor"> 
             <div class="form-row">
                 <div class="col mb-3">
-                    <label class="apply-label" for="FullName">Full Name</label>
-                    <input type="text" class="form-control" name="FullName" id="FullName">
+                    <label class="apply-label" for="fullName">Full Name</label>
+                    <input type="text" class="form-control" formControlName="fullName" name="fullName" id="fullName">
                 </div>
             </div>
             <div class="form-row ">
@@ -18,17 +18,17 @@
                     <div class="row">
                         <div class="col-md-6 mb-3 form-group">
                             <label class="apply-label" for="Email">Email</label>
-                            <input type="email" class="form-control" name="Email" id="Email">
+                            <input type="email" class="form-control" formControlName="email" name="Email" id="Email">
                         </div>
                         <div class="col-md-6 mb-3 form-group">
                         <label class="apply-label" for="PhoneNumber">Phone Number</label>
-                            <input type="tel" class="form-control" name="PhoneNumber" id="PhoneNumber">
+                            <input type="tel" class="form-control" formControlName="phone" name="PhoneNumber" id="PhoneNumber">
                         </div>
                     </div>
                 </div>    
                
             </div>
-        </form>
+        </div>
         <div class="cv row">
             <div class="col-8 describe">
                 Upload CV from Computer <br>
@@ -36,9 +36,9 @@
             </div>
             <label class="col-2 btn btn-primary align-self-center" for="file">
                 Upload CV
-                <img src="/src/public/img/Upload.svg" alt="">
+                <img src="" alt="">
             </label>
-            <input type="file" id="file" name="file"/>
+            <input type="file" id="file" name="file" (change)="onFileChange($event)"/>
         </div>
         <div class="save-cv d-flex">
             <div class="form-check">
@@ -49,10 +49,11 @@
         </div>
         <div class="cover-letter">
             <label class="cover-label" for="cover-letter">Cover Letter</label>
-            <textarea class="form-control" id="cv-lt" name="cv_lt" rows="8" placeholder="Write a brief introduction about yourself (strengths, weaknesses) if desired, the reason for working at this company. This is a way to impress the recruiter if you do not have work experience (or a poor CV)."></textarea>
+            <textarea class="form-control" formControlName="coverLetter" id="cv-lt" name="cv_lt" rows="8" placeholder="Write a brief introduction about yourself (strengths, weaknesses) if desired, the reason for working at this company. This is a way to impress the recruiter if you do not have work experience (or a poor CV)."></textarea>
         </div>
+        {{ message }}
         <div class="action d-inline-flex justify-content-start mt-5">
-            <a href="/job/alljob" type="reset" class="btn btn-secondary">Cancel</a>
+            <a href="/home" onclick="location.href='/home';" type="reset" class="btn btn-secondary">Cancel</a>
             <button type="submit" value="Apply CV" class="btn btn-primary ml-5">Apply</button>
         </div>
     </div>

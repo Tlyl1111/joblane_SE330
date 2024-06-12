@@ -14,10 +14,22 @@ public class Applications {
     private Users userId;
     @DBRef
     private JobPosts jobPostId;
+
     private String cv;
     private String coverLetter;
     private String status;
     private Date applicationDate;
+
+    @DBRef
+    private JobSeekers jobSeekerId;
+
+    public JobSeekers getJobSeekerId() {
+        return jobSeekerId;
+    }
+
+    public void setJobSeekerId(JobSeekers jobSeekerId) {
+        this.jobSeekerId = jobSeekerId;
+    }
 
     public String getId() {
         return id;
@@ -84,5 +96,8 @@ public class Applications {
         this.coverLetter = coverLetter;
         this.status = status;
         this.applicationDate = applicationDate;
+    }
+    public Applications(){
+        
     }
 }

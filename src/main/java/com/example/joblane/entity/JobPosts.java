@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Document(collection = "jobposts")
 public class JobPosts {
     @Id
@@ -25,8 +27,22 @@ public class JobPosts {
     private Date startDate;
     private Date endDate;
     private boolean isApproved;
+
     @DBRef
+    @JsonManagedReference
     private Employers employerId;
+
+    @DBRef
+    @JsonManagedReference
+    private Companies companyId;
+
+    public Companies getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Companies companyId) {
+        this.companyId = companyId;
+    }
 
     public Employers getEmployerId() {
         return employerId;

@@ -1,7 +1,10 @@
 package com.example.joblane.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 
@@ -19,6 +22,29 @@ public class Users {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    @DBRef
+    @JsonManagedReference
+    private JobSeekers jobSeekerId;
+    public JobSeekers getJobSeekerId() {
+        return jobSeekerId;
+    }
+
+    public void setJobSeekerId(JobSeekers jobSeekerId) {
+        this.jobSeekerId = jobSeekerId;
+    }
+
+    @DBRef
+    @JsonManagedReference
+    private Employers employerId;
+
+    public Employers getEmployerId() {
+        return employerId;
+    }
+
+    public void setEmployerId(Employers employerId) {
+        this.employerId = employerId;
     }
 
     public String getId() {
