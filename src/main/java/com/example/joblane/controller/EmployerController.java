@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.joblane.entity.Employers;
 import com.example.joblane.entity.JobPosts;
+import com.example.joblane.entity.Users;
 import com.example.joblane.model.mapper.EmployerUpdateRequest;
 import com.example.joblane.model.mapper.ProfileUpdateRequest;
 import com.example.joblane.repository.EmployerRepository;
+import com.example.joblane.repository.UserRepository;
 import com.example.joblane.service.EmployerService;
 import com.example.joblane.service.JobSeekerService;
 
@@ -28,6 +30,9 @@ public class EmployerController {
 
   @Autowired
   private EmployerRepository employerRepository;
+
+  @Autowired
+  private UserRepository userRepository;
 
   @PostMapping("/updateEmployer")
   public ResponseEntity<Map<String, String>> updateProfile(@RequestBody EmployerUpdateRequest request) {
@@ -44,8 +49,15 @@ public class EmployerController {
   }
 
   @GetMapping("/employer/{id}")
-    public Employers getEmployerById(@PathVariable String id) {
-      System.out.println("id: "+ id);
-        return employerRepository.findById(id).orElse(null);
-    }
+  public Employers getEmployerById(@PathVariable String id) {
+    System.out.println("id: "+ id);
+      return employerRepository.findById(id).orElse(null);
+  }
+
+  @GetMapping("/user/{id}")
+  public Users getUserById(@PathVariable String id) {
+    System.out.println("id: "+ id);
+      return userRepository.findById(id).orElse(null);
+  } 
+    
 }

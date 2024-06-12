@@ -57,7 +57,23 @@ export class JobPostDetailComponent implements OnInit {
             this.http.get<any>(`http://localhost:8080/api/employer/${this.jobPost.employerId.id}`).subscribe(
               employer => {
                 this.employer = employer;
-                console.log('company: ' + this.employer)
+                console.log('employer: ' + this.employer)
+                const userid = localStorage.getItem('userId');
+                if (this.employer && userid) {
+                  // Sau khi lấy được jobPost, tiếp tục lấy thông tin công ty
+                  this.http.get<any>(`http://localhost:8080/api/user/${userid}`).subscribe(
+                    user => {
+                      this.user = user;
+                      console.log('user: ' + this.user)
+                    },
+                    error => {
+                      console.error('Error loading company details:', error);
+                    }
+                  );
+                } else {
+                  console.error('Job post not found or invalid:', jobPost);
+                }
+
               },
               error => {
                 console.error('Error loading company details:', error);
