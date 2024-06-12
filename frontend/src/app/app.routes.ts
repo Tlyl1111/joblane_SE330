@@ -18,6 +18,10 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { CompanyComponent } from './pages/company/company.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { PostNewJobComponent } from './pages/post-new-job/post-new-job.component';
+import { JobSeekerComponent } from './pages/admin/job-seeker/job-seeker.component';
+import { EmployerComponent } from './pages/admin/employer/employer.component';
+import { JobPostComponent } from './pages/admin/job-post/job-post.component';
+
 
 import { NgModule } from '@angular/core';
 
@@ -42,7 +46,11 @@ export const routes: Routes = [
   { path: 'home', component: HomepageComponent},
   {path:'company',component: CompanyComponent, pathMatch:'full'},
   {path:'categories',component: CategoriesComponent, pathMatch:'full'},
-  { path: 'post-new-job', component: PostNewJobComponent}
+  { path: 'post-new-job', component: PostNewJobComponent},
+  {path:'job-seeker',component: JobSeekerComponent, pathMatch:'full'},
+  {path:'employer',component: EmployerComponent, pathMatch:'full'},
+  {path:'job-post-list',component: JobPostComponent, pathMatch:'full'},
+
 
 ];
 
