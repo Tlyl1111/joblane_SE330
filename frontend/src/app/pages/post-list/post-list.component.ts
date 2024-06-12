@@ -30,9 +30,24 @@ export class PostListComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:8080/api/jobposts/list').subscribe(data => {
-      this.jobPosts = data;
-      
-    });
+    this.http.get<any[]>('http://localhost:8080/api/jobposts/list').subscribe(
+      data => {
+        if (data) {
+          this.jobPosts = data;
+          this.initializeSlickCarousel();
+        } else {
+          console.error('No data received from API');
+        }
+      },
+      error => {
+        console.error('Error fetching job posts:', error);
+      }
+    );
+  }
+
+  initializeSlickCarousel() {
+    setTimeout(() => {
+      $('.your-carousel-class').slick(this.slickConfig);
+    }, 0);
   }
 }

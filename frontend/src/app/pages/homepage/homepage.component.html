@@ -3,27 +3,29 @@
         <div class="container-fluid">
             <div class="title-bg d-flex justify-content-center row mb-5">Your Journey to the Right Job!</div>
             <div class="search-bar row mt-5">
-                <div class="col search-container">
+                <form class="col search-container" [formGroup]="searchForm" (ngSubmit)="onSearch()">
                     <div class="input-group">
-                        <input type="text" class="form-control search-input" placeholder="Job Title" aria-label="Job Title">
+                        <input type="text" formControlName="title" class="form-control search-input" placeholder="Job Title" aria-label="Job Title">
                         
                         <div class="search-divider"></div>
 
-                        <select class="custom-select search-select w-30 mx-3" id="locationDropdown">
+                        <select class="custom-select search-select w-30 mx-3" formControlName="location" id="locationDropdown">
                             <option selected>Location</option>
+                            <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
                         </select>
 
                         <div class="search-divider"></div>
 
-                        <select class="custom-select search-select w-30 mx-3" id="categoriesDropdown">
+                        <select class="custom-select search-select w-30 mx-3" formControlName="category" id="categoriesDropdown">
                             <option selected>Categories</option>
+                            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
                         </select>
                     </div>
                     <button type="submit" class="primary d-flex align-items-center">
                         <img src="/assets/icons/Search.svg" alt="search" >
                         <span class="ml-3">Search</span>
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
