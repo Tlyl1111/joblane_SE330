@@ -25,10 +25,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let jobSeeker of paginatedJobSeekers">
+              <!-- <tr *ngFor="let jobSeeker of paginatedJobSeekers">
                 <td>{{ jobSeeker.name }}</td>
                 <td>{{ jobSeeker.email }}</td>
-                <td>{{ jobSeeker.phone }}</td>
+                <td>{{ jobSeeker.phone }}</td> -->
+              <tr *ngFor="let user of userList">
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.phone }}</td>
                 <td class="d-flex justify-content-start"> 
                     <button class="secondary">Send Email</button> 
                     <button class="primary d-flex align-items-center mx-2"> 

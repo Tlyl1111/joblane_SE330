@@ -21,18 +21,18 @@
                 <th class="rounded-top-left">Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>
-                <th>Registry Time</th>
-                <th>Registry Date</th>
+                <!-- <th>Registry Time</th>
+                <th>Registry Date</th> -->
                 <th class="rounded-top-right">Details</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let employer of paginatedEmployers">
-                <td>{{ employer.name }}</td>
-                <td>{{ employer.email }}</td>
-                <td>{{ employer.phone }}</td>
-                <td>{{ employer.registryTime }}</td>
-                <td>{{ employer.registryDate }}</td>
+              <tr *ngFor="let user of userList">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <!-- <td>{{ employer.registryTime }}</td>
+                <td>{{ employer.registryDate }}</td> -->
                 <td class="d-flex justify-content-start"> 
                     <button class="secondary">Send Email</button> 
                     <button class="primary d-flex align-items-center mx-2"> 
