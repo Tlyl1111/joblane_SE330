@@ -15,6 +15,11 @@ public class Users {
     private String role;
     private boolean googleLinked;
     private List<String> favoritePosts;
+    private boolean active; // Flag to indicate active or deactivated user
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public String getId() {
         return id;
@@ -72,6 +77,8 @@ public class Users {
         this.favoritePosts = favoritePosts;
     }
 
+
+    
     public Users() {
     }
 

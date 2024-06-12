@@ -11,7 +11,7 @@ import com.example.joblane.repository.UserRepository;
 
 @Service
 public class JobSeekerService {
-    @Autowired
+  @Autowired
   private JobSeekerRepository jobSeekerRepository;
 
   @Autowired
@@ -19,9 +19,9 @@ public class JobSeekerService {
 
   public void updateProfile(ProfileUpdateRequest request) {
     Users user = userRepository.findById(request.getUserId())
-      .orElseThrow(() -> new RuntimeException("User not found"));
+        .orElseThrow(() -> new RuntimeException("User not found"));
     JobSeekers jobSeeker = jobSeekerRepository.findById(request.getJobseekerId())
-      .orElseThrow(() -> new RuntimeException("Jobseeker not found"));
+        .orElseThrow(() -> new RuntimeException("Jobseeker not found"));
 
     user.setEmail(request.getFormData().getEmail());
     user.setName(request.getFormData().getFirstName() + " " + request.getFormData().getLastName());

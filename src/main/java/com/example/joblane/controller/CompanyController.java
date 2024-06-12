@@ -20,25 +20,22 @@ import com.example.joblane.entity.Companies;
 import com.example.joblane.entity.Users;
 import com.example.joblane.repository.CompanyRepository;
 
-
-
 @RestController
 @RequestMapping("/api/companies")
 public class CompanyController {
-    
+
     @Autowired
     private CompanyRepository companyRepository;
 
     @PostMapping("/create")
     public ResponseEntity<?> createCompany(@RequestBody Companies companies) {
-      if (companyRepository.existsBycompanyEmail(companies.getCompanyEmail())) {
-        return ResponseEntity.badRequest().body("Email already in use");
+        if (companyRepository.existsBycompanyEmail(companies.getCompanyEmail())) {
+            return ResponseEntity.badRequest().body("Email already in use");
+        }
+        companyRepository.save(companies);
+        System.out.println(companies.getId());
+        return ResponseEntity.ok().body(companies);
     }
-    companyRepository.save(companies);
-    System.out.println(companies.getId());
-    return ResponseEntity.ok().body(companies);
-    }
-    
 
     @GetMapping("/names")
     public List<String> getAllCompanyNames() {
@@ -51,4 +48,3 @@ public class CompanyController {
         return company != null ? ResponseEntity.ok(company) : ResponseEntity.notFound().build();
     }
 }
-

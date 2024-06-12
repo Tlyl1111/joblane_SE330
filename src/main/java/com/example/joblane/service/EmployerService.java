@@ -16,7 +16,7 @@ import com.example.joblane.repository.UserRepository;
 
 @Service
 public class EmployerService {
-    @Autowired
+  @Autowired
   private EmployerRepository employerRepository;
 
   @Autowired
@@ -26,18 +26,18 @@ public class EmployerService {
 
   public void updateProfile(EmployerUpdateRequest request) {
     Users user = userRepository.findById(request.getUserId())
-      .orElseThrow(() -> new RuntimeException("User not found"));
+        .orElseThrow(() -> new RuntimeException("User not found"));
     Employers employer = employerRepository.findById(request.getEmployerId())
-      .orElseThrow(() -> new RuntimeException("Jobseeker not found"));
+        .orElseThrow(() -> new RuntimeException("Jobseeker not found"));
     Companies companies = companyRepository.findById(request.getCompanyId())
-      .orElseThrow(() -> new RuntimeException("Companies not found"));
-      
-      System.out.println("company id:" + companies.getId());
+        .orElseThrow(() -> new RuntimeException("Companies not found"));
+
+    System.out.println("company id:" + companies.getId());
 
     user.setEmail(request.getFormData().getEmail());
     user.setName(request.getFormData().getFirstName() + " " + request.getFormData().getLastName());
     userRepository.save(user);
-    
+
     employer.setAddress(request.getFormData().getAddress());
     employer.setPhone(request.getFormData().getPhone());
     employer.setAvatar(request.getFormData().getAvatar()); // Thêm dòng này
