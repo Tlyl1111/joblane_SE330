@@ -38,22 +38,23 @@
     <p class="my-2">You can follow your Post</p>    
         <div class="post-list-container">
             <button class="slick-prev">Previous</button>
-            <div class="post-list">
-                <a class="list-item d-flex align-items-center"  *ngFor="let item of items">
-                    <img src="assets/img/Logo/Company_Delaso.svg" alt="">
-                    <div class="d-flex flex-column align-items-start">
-                        <h6>Specialist Digital Marketing/Content Marketing</h6>
-                        <p>Công ty TNHH TuDo </p>
-                    </div>
-                    <div class="d-flex ms-auto">
-                        <button type="submit" class="primary d-flex ">
-                            Candidates: 18
-                          </button>
-                        <button type="submit" class="secondary d-flex mx-3">
-                            Close
-                            <img src="assets/icons/Chevron Right.svg" alt="arrow">
-                          </button>
-                    </div>
+            <div class="post-list" ngxSlickCarousel config="slickConfig">
+                <a class="list-item d-flex align-items-center" ngxSlickItem *ngFor="let job of jobPosts"  >
+                    
+                        <img  [src]="job.jobPostImage" alt="{{job.title}}">
+                        <div class="d-flex flex-column align-items-start">
+                            <h6>{{job.title}}</h6>
+                            <p>{{job.companyType}} </p>
+                        </div>
+                        <div class="d-flex ms-auto">
+                            <button type="submit" class="primary d-flex ">
+                                Candidates: 18
+                            </button>
+                            <button type="submit" class="secondary d-flex mx-3">
+                                Close
+                                <img src="assets/icons/Chevron Right.svg" alt="arrow">
+                            </button>
+                        </div>
                     
                 </a>
             </div>

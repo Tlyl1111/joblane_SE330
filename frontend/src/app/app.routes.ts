@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignIn1Component } from './pages/sign-in-1/sign-in-1.component';
 import { SignIn2Component } from './pages/sign-in-2/sign-in-2.component';
@@ -25,10 +25,6 @@ import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
 
-
-
-
-
   { path: 'sign-in', component: SignInComponent},
   { path: 'sign-in-1', component: SignIn1Component},
   { path: 'sign-in-2', component: SignIn2Component},
@@ -47,9 +43,6 @@ export const routes: Routes = [
   {path:'company',component: CompanyComponent, pathMatch:'full'},
   {path:'categories',component: CategoriesComponent, pathMatch:'full'},
   { path: 'post-new-job', component: PostNewJobComponent}
-
-  
-
 
 ];
 

@@ -43,15 +43,8 @@ public class JobPostController {
     }
   }
 
-    @GetMapping("/")
-    public ResponseEntity<List<JobPosts>> getAllJobPosts() {
-        List<JobPosts> jobPosts = jobPostRepository.findAll();
-    // Xử lý nếu có job post nào có companyId null
-    // jobPosts.forEach(job -> {
-    //     if (job.getCompanyId() == null) {
-    //         job.setCompanyId(new Companies()); // Hoặc bất kỳ xử lý nào khác phù hợp
-    //     }
-    // });
-    return ResponseEntity.ok(jobPosts);
+    @GetMapping("/list")
+    public List<JobPosts> getAllJobPosts() {
+      return jobPostRepository.findAll();
     }
 }
