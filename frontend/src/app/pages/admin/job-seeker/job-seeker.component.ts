@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms'; 
+import { HttpClient } from '@angular/common/http';
 
 export interface JobSeeker {
   name: string;
@@ -22,21 +23,27 @@ export interface JobSeeker {
 })
 export class JobSeekerComponent implements OnInit {
   jobSeekers: JobSeeker[] = [];
+  userList: any[] = [];
   paginatedJobSeekers: JobSeeker[] = [];
   searchTerm: string = '';
   rowsPerPage: number = 10;
   currentPage: number = 1;
   totalPages: number = 1;
   rowsOptions: number[] = [1, 2, 3, 5, 10];
-
+  constructor(private http: HttpClient) { }
   ngOnInit() {
+    this.http.get<any[]>('http://localhost:8080/api/listJobseekers').subscribe(data => {
+      this.userList = data;  
+      console.log(this.userList); // Add this line
+      this.paginatedJobSeekers = data;
     // Giả lập dữ liệu job seekers
-    this.jobSeekers = [
+/*     this.jobSeekers = [
       { name: 'John Doe', email: 'john.doe@example.com', phone: '+1234567890' },
       { name: 'Jane Smith', email: 'jane.smith@example.com', phone: '+0987654321' },
       // Thêm các dữ liệu khác nếu cần
-    ];
-    this.updatePagination();
+    ]; */
+    // this.updatePagination();
+  });
   }
 
   onRowsPerPageChange() {
