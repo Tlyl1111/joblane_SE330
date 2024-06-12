@@ -15,7 +15,9 @@ a{
     height: 20px;
 }
 
-
+.form-control{
+  width: 80%;
+}
 
 .list-unstyled{
     text-align: left;
@@ -31,7 +33,7 @@ button {
     text-decoration: none;
     color: white;
     transition: all 0.2s ease-in-out; 
-    width: 100%;
+    width: fit-content;
     padding: 5px 20px;
     border-radius: 100px;
     border: none;

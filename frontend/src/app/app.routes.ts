@@ -21,6 +21,8 @@ import { PostNewJobComponent } from './pages/post-new-job/post-new-job.component
 import { JobSeekerComponent } from './pages/admin/job-seeker/job-seeker.component';
 import { EmployerComponent } from './pages/admin/employer/employer.component';
 import { JobPostComponent } from './pages/admin/job-post/job-post.component';
+import { DetailJsComponent } from './pages/admin/detail-js/detail-js.component';
+import { DetailEmComponent } from './pages/admin/detail-em/detail-em.component';
 
 
 import { NgModule } from '@angular/core';
@@ -50,6 +52,8 @@ export const routes: Routes = [
   {path:'job-seeker',component: JobSeekerComponent, pathMatch:'full'},
   {path:'employer',component: EmployerComponent, pathMatch:'full'},
   {path:'job-post-list',component: JobPostComponent, pathMatch:'full'},
+  {path:'detail-js',component: DetailJsComponent, pathMatch:'full'},
+  {path:'detail-em',component: DetailEmComponent, pathMatch:'full'},
 
 
 ];
