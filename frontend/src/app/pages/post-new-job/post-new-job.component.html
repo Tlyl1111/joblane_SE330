@@ -1,6 +1,5 @@
-<app-header></app-header>
 
-<form id="postform" action="/employer/posting" method="post" enctype="multipart/form-data" class="container">
+<form id="postform" class="container" [formGroup]="jobpostForm" (ngSubmit)="onSubmit()">
   <div class="text-center mt-5">
     <div class="title">Hi, Manager</div>
     <p class="sub-title">Empower Your Recruitment: Post Jobs and Find Talent Here!</p>
@@ -10,7 +9,7 @@
     <div class="col">
       <div class="jobtitle">
         <p class="text" for="JobTitle">Job Title</p>
-        <input type="text" class="form-control" name="JobTitle" id="JobTitle" placeholder="" required>
+        <input type="text" class="form-control" formControlName="title" name="JobTitle" id="JobTitle" placeholder="" required>
         <div class="invalid-feedback">
           Please enter the Job title.
         </div>
@@ -18,7 +17,7 @@
       <div class="row">
       <div class="Category1">
         <p class="text" for="Category1">Category</p>
-        <select type="text" class="form-control" name="Category1" id="Category1" placeholder="" value="" required>
+        <select type="text" class="form-control" formControlName="category1" name="Category1" id="Category1" placeholder="" value="" required>
           <option value="Design">Design</option>
           <option value="Finance/Bank">Finance/Bank</option>
           <option value="IT">IT</option>
@@ -45,7 +44,7 @@
 
       <div class="Category2">
         <p class="text" for="Category2"></p>
-        <select type="text" class="form-control" name="Category2" id="Category2" placeholder="" value="" required>
+        <select type="text" class="form-control" formControlName="category2" name="Category2" id="Category2" placeholder="" value="" required>
           <option value="Design">Design</option>
           <option value="Finance/Bank">Finance/Bank</option>
           <option value="IT">IT</option>
@@ -72,7 +71,7 @@
 
       <div class="Category3">
         <p class="text" for="Category3"></p>
-        <select type="text" class="form-control" name="Category3" id="Category3" placeholder="" value="" required>
+        <select type="text" class="form-control" formControlName="category3" name="Category3" id="Category3" placeholder="" value="" required>
           <option value="Design">Design</option>
           <option value="Finance/Bank">Finance/Bank</option>
           <option value="IT">IT</option>
@@ -102,19 +101,19 @@
 
           <div class="col-md-4 mb-3">
             <p class="text" for="Location">Location</p>
-            <input type="text" class="form-control" name="Location" id="Location" placeholder="" value="" required>
+            <input type="text" class="form-control" formControlName="location" name="Location" id="Location" placeholder="" value="" required>
             <div class="invalid-feedback">
             </div>
           </div>
           <div class="col-md-4 mb-3">
             <p class="text" for="JobType">Job Type</p>
-            <input type="text" class="form-control" name="JobType" id="JobType" placeholder="" value="" required>
+            <input type="text" class="form-control" formControlName="type" name="JobType" id="JobType" placeholder="" value="" required>
             <div class="invalid-feedback">
             </div>
           </div>
           <div class="col-md-4 mb-3">
             <p class="text" for="CompanyType">Company Type</p>
-            <input type="text" class="form-control" name="CompanyType" id="CompanyType" placeholder="" value=""
+            <input type="text" class="form-control" formControlName="companyType" name="CompanyType" id="CompanyType" placeholder="" value=""
               required>
             <div class="invalid-feedback">
             </div>
@@ -126,20 +125,20 @@
         <div class="row">
           <div class="col-md-4 mb-3">
             <p class="text" for="Specialization">Specialization</p>
-            <input type="text" class="form-control" name="Specialization" id="Specialization" placeholder="" value=""
+            <input type="text" class="form-control" formControlName="specialization" name="Specialization" id="Specialization" placeholder="" value=""
               required>
             <div class="invalid-feedback">
             </div>
           </div>
           <div class="col-md-4 mb-3">
             <p class="text" for="Experience">Experience</p>
-            <input type="text" class="form-control" name="Experience" id="Experience" placeholder="" value="" required>
+            <input type="text" class="form-control" formControlName="experience" name="Experience" id="Experience" placeholder="" value="" required>
             <div class="invalid-feedback">
             </div>
           </div>
           <div class="col-md-4 mb-3">
             <p class="text" for="Salary">Salary</p>
-            <input type="text" class="form-control" name="Salary" id="Salary" placeholder="" value="" required>
+            <input type="text" class="form-control" formControlName="salaryRange" name="Salary" id="Salary" placeholder="" value="" required>
             <div class="invalid-feedback">
             </div>
           </div>
@@ -150,14 +149,14 @@
         <p class="text">Set your post date:</p>
         <div class="col">         
           <p class="text" for="StartDate">Start at</p>
-          <input type="date" class="form-control" name="StartDate" id="StartDate" placeholder="" value="" required>
+          <input type="date" class="form-control" formControlName="startDate" name="StartDate" id="StartDate" placeholder="" value="" required>
           <div class="invalid-feedback">
             Valid end date is required.
           </div>
         </div>
         <div class="col">
           <p class="text" for="EndDate">End at</p>
-          <input type="date" class="form-control" name="EndDate" id="EndDate" placeholder="" value="" required>
+          <input type="date" class="form-control" formControlName="endDate" name="EndDate" id="EndDate" placeholder="" value="" required>
           <div class="invalid-feedback">
             Valid end date is required.
           </div>
@@ -174,7 +173,7 @@
           <p class="text-center">Select or Drag and Drop here</p>
           <p class="text-center opacity"> <span style="color:gray">PNG, SVG file size no more than 10MB</span></p>
           <label class="center text-center btn-secondary" for="PostImage">Select file</label>
-          <input type="file" id="PostImage" name="PostImage" accept="image/png, image/jpeg" class="lg-center">
+          <input type="file" id="PostImage" name="PostImage" accept="image/png, image/jpeg" class="lg-center" (change)="onFileChange($event)" >
 
         </div>
         <br>
@@ -188,7 +187,7 @@
       </div>
       <div class="jobbenefit">
         <p class="text" for="Description">Job Benefits</p>
-        <textarea type="text" class="form-control" name="Description" id="Description" rows="5" placeholder=""
+        <textarea type="text" class="form-control" formControlName="benefitsAndDescription" name="Description" id="Description" rows="5" placeholder=""
           required></textarea>
         <div class="invalid-feedback">
           Please enter your Company Description.
@@ -196,14 +195,14 @@
       </div>
       <div class="jobrequire">
         <p class="text" for="Goal">Job Requirement</p>
-        <textarea type="text" class="form-control" name="Goal" id="Goal" rows="5" placeholder="" required></textarea>
+        <textarea type="text" class="form-control" formControlName="requirement" name="Goal" id="Goal" rows="5" placeholder="" required></textarea>
         <div class="invalid-feedback">
           Please enter your Company Goal.
         </div>
       </div>
       <div class="hiringprocess">
         <p class="text" for="HiringProcess">Hiring Process</p>
-        <textarea type="text" class="form-control" name="HiringProcess" id="HiringProcess" rows="5" placeholder=""
+        <textarea type="text" class="form-control" formControlName="hiringProcess" name="HiringProcess" id="HiringProcess" rows="5" placeholder=""
           required></textarea>
         <div class="invalid-feedback">
           Please enter your Company Adress.
@@ -211,14 +210,14 @@
       </div>
       <div class="howtoapply">
         <p class="text" for="Howtoapply">How to apply</p>
-        <textarea rows="5" class="form-control" name="Howtoapply" id="Howtoapply" placeholder="" required></textarea>
+        <textarea rows="5" class="form-control" formControlName="howToApply" name="Howtoapply" id="Howtoapply" placeholder="" required></textarea>
         <div class="invalid-feedback">
           Please enter your Company Email.
         </div>
       </div>
     </div>
   </div>
-  <br> <br>
+  <br>{{ message }} <br>
   <div col>
     <div class="form-group w-30 col-md-4 offset-md-4">
       <button type="submit" class=" primary w-100">Post Job</button>
@@ -227,7 +226,7 @@
 </form>
 <br> <br>
 <br> <br>
-<app-footer></app-footer>
+
 <script>
   document.getElementById('postform').addEventListener('submit', function (event) {
     var fileInput = document.getElementById('PostImage');

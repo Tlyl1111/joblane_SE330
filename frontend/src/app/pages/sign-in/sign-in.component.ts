@@ -28,12 +28,21 @@ export class SignInComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   login() {
-    this.http.post<any>('/api/auth/login', { email: this.email, password: this.password }).subscribe(
+    this.http.post<any>('http://localhost:8080/api/auth/login', { email: this.email, password: this.password }).subscribe(
       response => {
         console.log('Login successful', response.role);
         console.log('id', response.id);
+        
         localStorage.setItem('userRole', response.role);
-        localStorage.setItem('userRole', response.id);
+        localStorage.setItem('userId', response.id);
+        if(response.role == 'Jobseeker'){
+          localStorage.setItem('jobseekerId', response.jobSeekerId.id);
+          console.log('jobseeker id', response.jobSeekerId.id);
+        }else if(response.role == 'Employer'){
+          localStorage.setItem('employerId', response.employerId.id);
+          console.log('employer id', response.employerId.id);
+        }
+
         
         this.message = 'Login successful: ';
         this.router.navigate(['/home']);

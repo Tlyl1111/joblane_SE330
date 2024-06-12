@@ -4,6 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Document(collection = "employers")
 public class Employers {
     @Id
@@ -14,6 +17,7 @@ public class Employers {
 
     
     @DBRef
+    @JsonBackReference
     private Users userId;
     @DBRef
     private Companies companyId;
