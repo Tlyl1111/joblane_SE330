@@ -23,6 +23,7 @@ import { EmployerComponent } from './pages/admin/employer/employer.component';
 import { JobPostComponent } from './pages/admin/job-post/job-post.component';
 import { DetailJsComponent } from './pages/admin/detail-js/detail-js.component';
 import { DetailEmComponent } from './pages/admin/detail-em/detail-em.component';
+import { DetailPostComponent } from './pages/admin/detail-post/detail-post.component';
 
 
 import { NgModule } from '@angular/core';
@@ -54,6 +55,7 @@ export const routes: Routes = [
   {path:'job-post-list',component: JobPostComponent, pathMatch:'full'},
   {path:'detail-js',component: DetailJsComponent, pathMatch:'full'},
   {path:'detail-em',component: DetailEmComponent, pathMatch:'full'},
+  {path:'detail-post',component: DetailPostComponent, pathMatch:'full'},
 
 
 ];
