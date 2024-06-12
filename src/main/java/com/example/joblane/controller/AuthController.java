@@ -62,12 +62,14 @@ public class AuthController {
       
       JobSeekers jobSeeker = new JobSeekers();
       jobSeeker.setUserId(user);
+      jobSeekerRepository.save(jobSeeker);
       
       user.setRole("Jobseeker");
+      user.setJobSeekerId(jobSeeker);
       userRepository.save(user);
       System.out.println(jobSeeker);
 
-      return jobSeekerRepository.save(jobSeeker);
+      return jobSeeker;
     }
 
     @Autowired
@@ -80,12 +82,14 @@ public class AuthController {
       
       Employers employer = new Employers();
       employer.setUserId(user);
+      employerRepository.save(employer);
       
       user.setRole("Employer");
+      user.setEmployerId(employer);
       userRepository.save(user);
       System.out.println(employer);
 
-      return employerRepository.save(employer);
+      return employer;
     }
     
 

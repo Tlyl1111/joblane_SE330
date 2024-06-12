@@ -17,6 +17,8 @@ import { ApplyCVComponent } from './pages/apply-cv/apply-cv.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { CompanyComponent } from './pages/company/company.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+import { PostNewJobComponent } from './pages/post-new-job/post-new-job.component';
+
 import { NgModule } from '@angular/core';
 
 
@@ -44,6 +46,8 @@ export const routes: Routes = [
   { path: 'home', component: HomepageComponent},
   {path:'company',component: CompanyComponent, pathMatch:'full'},
   {path:'categories',component: CategoriesComponent, pathMatch:'full'},
+  { path: 'post-new-job', component: PostNewJobComponent}
+
   
 
 
