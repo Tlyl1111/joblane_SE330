@@ -28,10 +28,10 @@
     </div>
     <div class="detail_job">
         <div class="author d-flex align-items-end">
-            <img [src]="employer?.avatar" alt="logo" class="author-ava mr-2">
+            <img [src]="company?.companyLogo" alt="logo" class="author-ava mr-2">
             <div class="d-flex flex-column">
                 <div class="name">
-                    {{user?.name}}
+                    {{ company?.companyName }}
                 </div>
                 <div class="time d-flex align-items-center">
                     <img src="assets/icons/Clock.svg" alt="time">
@@ -94,7 +94,10 @@
             <div class="context apply">
                 {{ jobPost?.howToApply }}
             </div>
-            <button type="submit" class="primary align-self-center">
+            <br>
+            <br>
+            <div style="color: crimson;">{{message}}</div>
+            <button type="submit" (click)="onSubmit()" class="primary align-self-center">
                 Apply Now
                 <img src="assets/icons/Chevron Right.svg" alt="arrow">
             </button>

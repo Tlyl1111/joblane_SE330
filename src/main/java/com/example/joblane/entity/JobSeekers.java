@@ -1,5 +1,8 @@
 package com.example.joblane.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,6 +20,15 @@ public class JobSeekers {
     private String CV;
     private String avatar;
     private String Phone;
+    private List<String> appliedPosts = new ArrayList<>();
+
+    public List<String> getAppliedPosts() {
+        return appliedPosts;
+    }
+
+    public void setAppliedPosts(List<String> appliedPosts) {
+        this.appliedPosts = appliedPosts;
+    }
 
     public String getPhone() {
         return Phone;
@@ -88,5 +100,12 @@ public class JobSeekers {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public void addAppliedPost(String jobPostId) {
+        if (this.appliedPosts == null) {
+            this.appliedPosts = new ArrayList<>();
+        }
+        this.appliedPosts.add(jobPostId);
     }
 }

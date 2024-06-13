@@ -39,12 +39,12 @@
     <p class="mt-5 mb-3 h4">Hi Jobseeker!</p>
     <p class="my-2">You can follow your Applied Jobs</p>
     <div class="d-flex">
-        <div class="applied-list">
-            <a class="list-item d-flex align-items-center"  *ngFor="let item of items">
-                <img src="assets/img/Logo/Company_Delaso.svg" alt="">
+        <div class="applied-list" *ngFor="let post of appliedPosts">
+            <a class="list-item d-flex align-items-center"  >
+                <img id="job-post" [src]="post.jobPostImage" alt="">
                 <div class="d-flex flex-column align-items-start">
-                    <h6>Specialist Digital Marketing/Content Marketing</h6>
-                    <p>Công ty TNHH TuDo </p>
+                    <h6>{{ post.title }}</h6>
+                    <p>{{ post.type }} </p>
                 </div>
                 <div id="statusTag" class="status-tag status-yes ms-auto">
                     <img id="statusImage" src="assets/icons/Approved(1).svg" alt="">
