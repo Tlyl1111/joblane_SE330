@@ -1,23 +1,45 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NgFor } from '@angular/common';
 import jQuery from 'jquery';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 const $ = jQuery;
 
 @Component({
   selector: 'app-list-applied-job',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, NgFor],
+  imports: [HeaderComponent, ReactiveFormsModule, HttpClientModule, FooterComponent, NgFor],
   templateUrl: './list-applied-job.component.html',
   styleUrls: ['./list-applied-job.component.scss']
 })
-export class ListAppliedJobComponent implements AfterViewInit {
-  items = Array(15).fill(0).map((_, i) => `Item ${i + 1}`);
+export class ListAppliedJobComponent implements OnInit, AfterViewInit  {
+  items: any[] = [];
+  appliedPosts: any[] = [];
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
-  constructor() {}
-
+  ngOnInit(): void {
+    const jobSeekerId = localStorage.getItem('jobseekerId');
+    if (jobSeekerId) {
+      this.http.get<any[]>(`http://localhost:8080/api/jobseeker/${jobSeekerId}/applied-posts`)
+        .subscribe(appliedPosts => {
+          this.appliedPosts = appliedPosts;
+          console.log('results:', this.appliedPosts);
+        }, error => {
+          console.error('Error fetching applied posts', error);
+        });
+    } else {
+      console.error('Job Seeker ID is not available');
+    }
+  }
+  
   ngAfterViewInit() {
     this.initSlickCarousel('.applied-list', {
       dots: true,

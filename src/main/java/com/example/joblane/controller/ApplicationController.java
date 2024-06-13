@@ -30,7 +30,7 @@ public class ApplicationController {
     public ResponseEntity<Map<String, String>> createJobpost(@RequestBody ApplyUpdateRequest request) {
     Map<String, String> response = new HashMap<>();
     try {
-      System.out.println("Received request: " + request); // Thêm dòng này để kiểm tra dữ liệu nhận được
+      System.out.println("Received request jsId: " + request.getJobSeekerId()); // Thêm dòng này để kiểm tra dữ liệu nhận được
       applyService.createApplication(request);
       response.put("message", "Job post created successfully");
       return ResponseEntity.ok(response);

@@ -3,6 +3,15 @@ package com.example.joblane.model.mapper;
 public class ApplyUpdateRequest {
     private String userId;
     private String jobSeekerId;
+    private String jobPostId;
+    public String getJobPostId() {
+        return jobPostId;
+    }
+
+    public void setJobPostId(String jobPostId) {
+        this.jobPostId = jobPostId;
+    }
+
     private FormData formData;
 
     public static class FormData {
