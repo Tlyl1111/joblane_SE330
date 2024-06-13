@@ -18,6 +18,7 @@ export class JobPostDetailComponent implements OnInit {
   company: any;
   employer: any;
   user: any;
+  message: string = ' ';
 
   private baseUrl = 'http://your-backend-url'; // Thay bằng URL của backend
 
@@ -57,7 +58,7 @@ export class JobPostDetailComponent implements OnInit {
             this.http.get<any>(`http://localhost:8080/api/employer/${this.jobPost.employerId.id}`).subscribe(
               employer => {
                 this.employer = employer;
-                console.log('employer: ' + this.employer)
+                console.log('employer: ' + this.jobPost.employerId.userId)
                 const userid = localStorage.getItem('userId');
                 if (this.employer && userid) {
                   // Sau khi lấy được jobPost, tiếp tục lấy thông tin công ty
@@ -87,6 +88,14 @@ export class JobPostDetailComponent implements OnInit {
           console.error('Error loading job post details:', error);
         }
       );
+    }
+  }
+  onSubmit() : void{
+    const userRole = localStorage.getItem('userRole');
+    if(userRole == "Employer"){
+      this.message = 'Không thể ứng tuyển với vai trò nhà tuyển dụng'
+    }else{
+      this.router.navigate(['/apply-cv'], { state: { jobId: this.jobId} });
     }
   }
   
